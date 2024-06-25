@@ -4,18 +4,42 @@
       Title="View Recipes"
       Background="#F5F5F5">
     <Page.Resources>
-        <!-- Existing styles remain the same -->
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Background" Value="#FF3E4EB8"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
     </Page.Resources>
     <Grid>
         <ScrollViewer>
             <StackPanel Margin="20">
                 <TextBlock Text="View Recipes" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
 
-                <ListBox x:Name="RecipesListBox" Height="200" SelectionChanged="RecipesListBox_SelectionChanged"/>
+                <ListView x:Name="RecipesListView" Height="200" SelectionChanged="RecipesListView_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Recipe" Width="200" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Ingredients" Width="80" DisplayMemberBinding="{Binding Ingredients.Count}"/>
+                            <GridViewColumn Header="Steps" Width="80" DisplayMemberBinding="{Binding Steps.Count}"/>
+                            <GridViewColumn Header="Calories" Width="80" DisplayMemberBinding="{Binding Calories}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
 
                 <Button Content="View Details" Click="ViewDetailsButton_Click"/>
 
-                <!-- New section for displaying recipe details -->
+                <!-- Recipe details panel -->
                 <StackPanel x:Name="RecipeDetailsPanel" Visibility="Collapsed" Margin="0,20,0,0">
                     <TextBlock x:Name="RecipeNameTextBlock" FontSize="18" FontWeight="Bold"/>
                     <TextBlock Text="Ingredients:" FontWeight="Bold" Margin="0,10,0,5"/>

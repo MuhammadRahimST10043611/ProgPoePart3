@@ -76,6 +76,11 @@ public class Recipe
             "Recipe Details", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
+    public string GetSummary()
+    {
+        return $"{Name} | Ingredients: {Ingredients.Count} | Steps: {Steps.Count} | Calories: {CalculateTotalCalories():F0}";
+    }
+
     public double CalculateTotalCalories()
     {
         return Ingredients.Sum(i => i.Calories);

@@ -19,15 +19,23 @@ namespace RecipeAppWPF
 
         private void LoadRecipes()
         {
-            RecipesListBox.ItemsSource = recipeApp.GetRecipes().Select(r => r.Name).ToList();
+            var recipes = recipeApp.GetRecipes().Select(r => new
+            {
+                r.Name,
+                r.Ingredients,
+                r.Steps,
+                Calories = r.CalculateTotalCalories()
+            }).ToList();
+
+            RecipesListView.ItemsSource = recipes;
         }
 
         private void ViewDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (RecipesListBox.SelectedItem != null)
+            if (RecipesListView.SelectedItem != null)
             {
-                string selectedRecipeName = RecipesListBox.SelectedItem.ToString();
-                currentlyDisplayedRecipe = recipeApp.Recipes.FirstOrDefault(r => r.Name == selectedRecipeName);
+                var selectedRecipe = (dynamic)RecipesListView.SelectedItem;
+                currentlyDisplayedRecipe = recipeApp.Recipes.FirstOrDefault(r => r.Name == selectedRecipe.Name);
                 if (currentlyDisplayedRecipe != null)
                 {
                     DisplayRecipeDetails(currentlyDisplayedRecipe);
@@ -42,7 +50,7 @@ namespace RecipeAppWPF
             StepsItemsControl.ItemsSource = recipe.Steps;
 
             double totalCalories = recipe.CalculateTotalCalories();
-            TotalCaloriesTextBlock.Text = $"Total Calories: {totalCalories}";
+            TotalCaloriesTextBlock.Text = $"Total Calories: {totalCalories:F0}";
 
             CalorieExplanationTextBlock.Text = totalCalories <= 100 ?
                 "This recipe is low in calories, making it a healthy choice." :
@@ -53,7 +61,7 @@ namespace RecipeAppWPF
             RecipeDetailsPanel.Visibility = Visibility.Visible;
         }
 
-        private void RecipesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void RecipesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             RecipeDetailsPanel.Visibility = Visibility.Collapsed;
         }
