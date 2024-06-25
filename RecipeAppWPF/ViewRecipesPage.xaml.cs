@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -45,6 +44,8 @@ namespace RecipeAppWPF
 
         private void DisplayRecipeDetails(Recipe recipe)
         {
+            recipe.ResetCalorieWarning(); // Reset the warning flag
+
             RecipeNameTextBlock.Text = recipe.Name;
             IngredientsTextBlock.Text = string.Join("\n", recipe.Ingredients.Select(i => $"• {i.Quantity} {i.Unit} of {i.Name}"));
             StepsItemsControl.ItemsSource = recipe.Steps;
@@ -59,6 +60,9 @@ namespace RecipeAppWPF
                 "This recipe is high in calories. It's best enjoyed in moderation.";
 
             RecipeDetailsPanel.Visibility = Visibility.Visible;
+
+            // Trigger the calorie notification
+            recipe.NotifyIfCaloriesExceedLimit();
         }
 
         private void RecipesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

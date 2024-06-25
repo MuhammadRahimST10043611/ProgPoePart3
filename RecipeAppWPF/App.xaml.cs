@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 
 namespace RecipeAppWPF
 {
@@ -15,7 +14,6 @@ namespace RecipeAppWPF
 
         public void AddRecipe(Recipe recipe)
         {
-            recipe.CalorieWarning += DisplayCalorieWarning;
             Recipes.Add(recipe);
         }
 
@@ -24,11 +22,6 @@ namespace RecipeAppWPF
         public void RemoveRecipe(Recipe recipe)
         {
             Recipes.Remove(recipe);
-        }
-
-        private void DisplayCalorieWarning(string message)
-        {
-            MessageBox.Show(message, "Calorie Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 }
