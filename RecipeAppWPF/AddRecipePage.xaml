@@ -1,0 +1,77 @@
+﻿<!-- AddRecipePage.xaml -->
+<Page x:Class="RecipeAppWPF.AddRecipePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Add Recipe"
+      Background="#F5F5F5">
+    <Page.Resources>
+        <!-- Styles remain the same -->
+    </Page.Resources>
+    <Grid>
+        <ScrollViewer>
+            <StackPanel Margin="20">
+                <TextBlock Text="Add Recipe" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+
+                <TextBlock Text="Recipe Name:"/>
+                <TextBox x:Name="RecipeName"/>
+
+                <TextBlock Text="Ingredients:"/>
+                <ListBox x:Name="IngredientsListBox" Height="100" Margin="0,0,0,10"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="IngredientName" Grid.Column="0" Margin="0,0,10,0" TextChanged="IngredientName_TextChanged" />
+                    <Button Content="Add Ingredient" Grid.Column="1" Click="AddIngredientButton_Click"/>
+                </Grid>
+
+                <TextBlock Text="Ingredient Quantity:"/>
+                <TextBox x:Name="IngredientQuantity"/>
+
+                <TextBlock Text="Ingredient Unit:"/>
+                <ComboBox x:Name="IngredientUnit">
+                    <ComboBoxItem>g</ComboBoxItem>
+                    <ComboBoxItem>kg</ComboBoxItem>
+                    <ComboBoxItem>ml</ComboBoxItem>
+                    <ComboBoxItem>L</ComboBoxItem>
+                    <ComboBoxItem>tsp</ComboBoxItem>
+                    <ComboBoxItem>tbsp</ComboBoxItem>
+                    <ComboBoxItem>cup</ComboBoxItem>
+                    <ComboBoxItem>piece</ComboBoxItem>
+                </ComboBox>
+
+                <TextBlock Text="Ingredient Calories:"/>
+                <TextBox x:Name="IngredientCalories"/>
+
+                <TextBlock Text="Ingredient Food Group:"/>
+                <ComboBox x:Name="IngredientFoodGroup">
+                    <ComboBoxItem>Fruits</ComboBoxItem>
+                    <ComboBoxItem>Vegetables</ComboBoxItem>
+                    <ComboBoxItem>Grains</ComboBoxItem>
+                    <ComboBoxItem>Protein Foods</ComboBoxItem>
+                    <ComboBoxItem>Dairy</ComboBoxItem>
+                    <ComboBoxItem>Oils</ComboBoxItem>
+                </ComboBox>
+
+                <TextBlock Text="Steps:"/>
+                <ListBox x:Name="StepsListBox" Height="100" Margin="0,0,0,10"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="StepDescription" Grid.Column="0" Margin="0,0,10,0"/>
+                    <Button Content="Add Step" Grid.Column="1" Click="AddStepButton_Click"/>
+                </Grid>
+
+                <Button Content="Add Recipe" Click="AddRecipeButton_Click"/>
+                <Button Content="Clear Form" Click="ClearFormButton_Click" Margin="0,10,0,0"/>
+                <TextBlock Text="Click 'Add Recipe' to save this recipe and start a new one." 
+                           TextWrapping="Wrap" Margin="0,10,0,0" FontStyle="Italic"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
