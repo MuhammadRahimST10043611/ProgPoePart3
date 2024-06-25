@@ -35,7 +35,7 @@ public class Recipe
         for (int i = 0; i < Ingredients.Count; i++)
         {
             Ingredients[i].Quantity *= scaleFactor;
-            Ingredients[i].Calories = originalCalories[i] * scaleFactor;
+            Ingredients[i].Calories *= scaleFactor;
         }
         return true;
     }

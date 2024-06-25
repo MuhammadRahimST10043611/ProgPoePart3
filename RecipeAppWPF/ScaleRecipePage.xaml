@@ -44,7 +44,11 @@
                 <TextBlock Text="Select Recipe:"/>
                 <ListBox x:Name="RecipesListBox" Height="200" SelectionChanged="RecipesListBox_SelectionChanged"/>
                 <TextBlock Text="Scale Factor:"/>
-                <ComboBox x:Name="ScaleFactorComboBox" Width="100" Margin="0,0,0,10"/>
+                <ComboBox x:Name="ScaleFactorComboBox" Width="100" Margin="0,0,0,10">
+                    <ComboBoxItem>0.5</ComboBoxItem>
+                    <ComboBoxItem>2</ComboBoxItem>
+                    <ComboBoxItem>3</ComboBoxItem>
+                </ComboBox>
                 <Button Content="Scale Recipe" Click="ScaleRecipeButton_Click"/>
             </StackPanel>
         </ScrollViewer>
