@@ -4,6 +4,9 @@ using System.Windows.Controls;
 
 namespace RecipeAppWPF
 {
+    /// <summary>
+    /// Interaction logic for RemoveRecipePage.xaml
+    /// </summary>
     public partial class RemoveRecipePage : Page
     {
         private RecipeApp recipeApp;
@@ -15,11 +18,17 @@ namespace RecipeAppWPF
             LoadRecipes();
         }
 
+        /// <summary>
+        /// Loads all recipes into the ListBox
+        /// </summary>
         private void LoadRecipes()
         {
             RecipesListBox.ItemsSource = recipeApp.GetRecipes().Select(r => r.Name).ToList();
         }
 
+        /// <summary>
+        /// Removes the selected recipe from the app
+        /// </summary>
         private void RemoveRecipeButton_Click(object sender, RoutedEventArgs e)
         {
             if (RecipesListBox.SelectedItem != null)

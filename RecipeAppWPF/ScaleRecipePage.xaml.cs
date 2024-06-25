@@ -5,10 +5,17 @@ using System.Windows.Controls;
 
 namespace RecipeAppWPF
 {
+    /// <summary>
+    /// Interaction logic for ScaleRecipePage.xaml
+    /// </summary>
     public partial class ScaleRecipePage : Page
     {
         private RecipeApp recipeApp;
 
+        /// <summary>
+        /// Initializes a new instance of the ScaleRecipePage class.
+        /// </summary>
+        /// <param name="recipeApp">The RecipeApp instance to use for recipe operations.</param>
         public ScaleRecipePage(RecipeApp recipeApp)
         {
             InitializeComponent();
@@ -16,11 +23,18 @@ namespace RecipeAppWPF
             LoadRecipes();
         }
 
+        /// <summary>
+        /// Loads the list of recipes into the RecipesListBox.
+        /// </summary>
         private void LoadRecipes()
         {
+            // Populate the RecipesListBox with recipe names
             RecipesListBox.ItemsSource = recipeApp.GetRecipes().Select(r => r.Name).ToList();
         }
 
+        /// <summary>
+        /// Handles the click event of the Scale Recipe button.
+        /// </summary>
         private void ScaleRecipeButton_Click(object sender, RoutedEventArgs e)
         {
             if (RecipesListBox.SelectedItem != null && ScaleFactorComboBox.SelectedItem != null)
@@ -36,7 +50,6 @@ namespace RecipeAppWPF
                     if (selectedRecipe.ScaleRecipe(scaleFactor))
                     {
                         MessageBox.Show($"Recipe scaled successfully by a factor of {scaleFactor}!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
                         // Display the scaled recipe
                         DisplayScaledRecipe(selectedRecipe);
                     }
@@ -52,6 +65,10 @@ namespace RecipeAppWPF
             }
         }
 
+        /// <summary>
+        /// Displays the details of a scaled recipe.
+        /// </summary>
+        /// <param name="recipe">The scaled recipe to display.</param>
         private void DisplayScaledRecipe(Recipe recipe)
         {
             string ingredients = string.Join("\n", recipe.Ingredients.Select(i => $"{i.Quantity} {i.Unit} of {i.Name}"));
@@ -62,6 +79,9 @@ namespace RecipeAppWPF
                 "Scaled Recipe Details", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
+        /// <summary>
+        /// Handles the selection changed event of the RecipesListBox.
+        /// </summary>
         private void RecipesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Handle selection change if needed

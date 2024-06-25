@@ -1,11 +1,13 @@
-﻿// AddRecipePage.xaml.cs
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace RecipeAppWPF
 {
+    /// <summary>
+    /// Interaction logic for AddRecipePage.xaml
+    /// </summary>
     public partial class AddRecipePage : Page
     {
         private RecipeApp recipeApp;
@@ -18,6 +20,9 @@ namespace RecipeAppWPF
             this.recipeApp = recipeApp;
         }
 
+        /// <summary>
+        /// Adds a new ingredient to the recipe
+        /// </summary>
         private void AddIngredientButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -47,6 +52,9 @@ namespace RecipeAppWPF
             }
         }
 
+        /// <summary>
+        /// Adds a new step to the recipe
+        /// </summary>
         private void AddStepButton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(StepDescription.Text))
@@ -57,6 +65,9 @@ namespace RecipeAppWPF
             }
         }
 
+        /// <summary>
+        /// Adds the complete recipe to the app
+        /// </summary>
         private void AddRecipeButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -83,6 +94,9 @@ namespace RecipeAppWPF
             ClearForm();
         }
 
+        /// <summary>
+        /// Clears all input fields and resets the form
+        /// </summary>
         private void ClearForm()
         {
             RecipeName.Clear();
@@ -100,7 +114,7 @@ namespace RecipeAppWPF
 
         private void IngredientName_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            // This method is currently empty
         }
     }
 }

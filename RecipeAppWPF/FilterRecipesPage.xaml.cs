@@ -4,6 +4,9 @@ using System.Windows.Controls;
 
 namespace RecipeAppWPF
 {
+    /// <summary>
+    /// Interaction logic for FilterRecipesPage.xaml
+    /// </summary>
     public partial class FilterRecipesPage : Page
     {
         private RecipeApp recipeApp;
@@ -14,6 +17,9 @@ namespace RecipeAppWPF
             this.recipeApp = recipeApp;
         }
 
+        /// <summary>
+        /// Filters recipes based on the input ingredient
+        /// </summary>
         private void FilterRecipesButton_Click(object sender, RoutedEventArgs e)
         {
             string ingredientName = IngredientFilterTextBox.Text.ToLower();
@@ -33,6 +39,9 @@ namespace RecipeAppWPF
             }
         }
 
+        /// <summary>
+        /// Displays details of the selected recipe
+        /// </summary>
         private void ViewDetailsButton_Click(object sender, RoutedEventArgs e)
         {
             if (FilteredRecipesListBox.SelectedItem != null)
@@ -48,7 +57,7 @@ namespace RecipeAppWPF
 
         private void FilteredRecipesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Handle selection change if needed
+            // This method is currently empty
         }
     }
 }
