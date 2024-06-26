@@ -1,10 +1,15 @@
 Instructions for how to compile and run the software:
 
 Using a WPF Application 
+
 A.	Becoming Aware of the Fundamentals of WPF
+
 WPF Is a Windows desktop client application for user interface foundation. It divides the user interface (UI) from business logic and offers a standardized programming model for creating apps.
+
 B.	Configuring Your Workspace for Development
+
 Set up Visual Studio, the IDE that is suggested for WPF development. Do not forget to factor in the workload for.NET desktop development.
+
 Install.NET SDK: Make sure you have installed the most recent version of the.NET SDK.
 
 C.	Starting a new WPF Project
